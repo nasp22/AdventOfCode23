@@ -20,4 +20,7 @@ if __name__ == "__main__":
     # game.print_puzzle()
 
     # Print pssible ids
-    game.possible_ids()
+    # game.possible_ids()
+
+    # part 2, minimum
+    game.minmum()

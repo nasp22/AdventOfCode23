@@ -72,4 +72,39 @@ class Game:
             # else:
                 # print(f"Game {number} is NOT possible")
 
-        print(f"Sum of possible game numbers: {possible_id_counter}")
+    def minmum(self):
+
+        rows = self.puzzle
+        minimum_numbers_multiplied = 1
+        total = []
+
+        for line in rows:
+            minimum_numbers_multiplied = 1
+            line = re.split(';|:', line)
+            number = line.pop(0)
+            number = int(''.join(filter(lambda i: i.isdigit(), number)))
+            row = dict(red=0, green=0, blue=0)
+
+            for set in line:
+                set = set.replace(" ", "")
+                set_list = set.strip().split(',')
+
+                for color in set_list:
+                    color_only = ''.join([char for char in color if char.isalpha()])
+                    number_of_cubes = int(''.join(filter(lambda i: i.isdigit(), color)))
+                    if number_of_cubes > row[color_only]:
+                        row[color_only] = number_of_cubes
+                    else:
+                        row[color_only] = row.get(color_only, 0)
+
+            for key in row.keys():
+                minimum_numbers_multiplied = int(row[key]) *  minimum_numbers_multiplied
+
+            total.append(minimum_numbers_multiplied)
+
+        result = 0
+
+        for number in total:
+            result += number
+
+        print(result)
