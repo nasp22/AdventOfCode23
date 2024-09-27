@@ -1,8 +1,7 @@
 """
 --- Day 2: Cube Conundrum ---
-PART 1
+PART 2
 
-Trying to it more object-oriented in this part
 """
 
 from game import Game
